@@ -63,8 +63,14 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				eco: {
-					primary: '#2A9D8F',
-					secondary: '#264653',
+					primary: {
+						DEFAULT: '#2A9D8F',
+						dark: '#1F7E6C'
+					},
+					secondary: {
+						DEFAULT: '#264653',
+						dark: '#1E3541'
+					},
 					accent: '#E9C46A',
 					danger: '#E76F51',
 					light: '#F4F9F8',

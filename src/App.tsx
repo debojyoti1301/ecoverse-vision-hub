@@ -1,8 +1,10 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 import HomePage from "./pages/HomePage";
 import PathDetectionPage from "./pages/PathDetectionPage";
 import NotFound from "./pages/NotFound";
@@ -22,7 +24,7 @@ const AppRoutes = () => {
       <div className="flex">
         <Sidebar isOpen={isSidebarOpen} />
         
-        <main className="flex-1 mt-16 md:ml-64">
+        <main className="flex-1 mt-16 md:ml-64 dark:bg-background dark:text-foreground">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/path-detection" element={<PathDetectionPage />} />
@@ -43,13 +45,15 @@ const AppRoutes = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <AppProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </AppProvider>
+      <ThemeProvider>
+        <AppProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </AppProvider>
+      </ThemeProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

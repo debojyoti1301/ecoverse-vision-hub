@@ -1,6 +1,6 @@
-
-import { Bell, Menu, Search, X } from "lucide-react";
+import { Bell, Menu, Moon, Search, Sun, X } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "@/context/ThemeContext";
 import RewardWidget from "./RewardWidget";
 
 interface NavbarProps {
@@ -10,9 +10,10 @@ interface NavbarProps {
 
 const Navbar = ({ toggleSidebar, isSidebarOpen }: NavbarProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 h-16 bg-white border-b border-border z-50 px-4">
+    <nav className="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-background border-b border-border z-50 px-4">
       <div className="container mx-auto h-full flex items-center justify-between">
         <div className="flex items-center gap-4">
           <button
@@ -47,6 +48,14 @@ const Navbar = ({ toggleSidebar, isSidebarOpen }: NavbarProps) => {
         </div>
 
         <div className="flex items-center gap-2">
+          <button 
+            onClick={toggleTheme}
+            className="p-2 rounded-full hover:bg-muted transition-colors"
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          >
+            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+          </button>
+          
           <button
             onClick={() => setIsSearchOpen(!isSearchOpen)}
             className="p-2 rounded-full hover:bg-muted transition-colors md:hidden"

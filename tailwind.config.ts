@@ -61,6 +61,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				eco: {
+					primary: '#2A9D8F',
+					secondary: '#264653',
+					accent: '#E9C46A',
+					danger: '#E76F51',
+					light: '#F4F9F8',
+					coin: '#F2CC5B'
 				}
 			},
 			borderRadius: {
